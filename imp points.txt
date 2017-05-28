@@ -73,3 +73,46 @@ In above line, 'a' is tag. href is attribute. So for every tag, there can be var
 
 15. What is sm in col-sm-4? Can it have other values also?
 Ans.For small devices we will use the .col-sm-* classes. Yes we can have other values also.
+
+16. What is diff between html and xml? 
+Ans 1)html was designed to specify how data should be displayed on web page where as xml was designed to hold the data
+	2)html has pre-defined tags but xml can have user defined tags
+
+17. What is diff between html, html5 and xhtml?
+Ans. html : It is used to display data in browser.
+	 html5:It is better version of html which is not just text but includes medio, video , audio  etc. features also
+	 xhtml: Its html4 with strict rules of xml. i.e. a tag if defined should also be closed i.e. just <a ...> is wrong. it should be <a ...>..</a>.
+
+18. ***TODO - col-sm-3 defining diff layouts for various kind of devices ***
+19. Whats is difference between semantic and non-semantic elemtns/tags in html5?
+Sementic elements/tag has clear meaning to both browser and developer from its name itself. For e.g. header, footer, article, section etc
+Non-semantic elements use is not clear from its name. For e.g. div, span etc
+
+20. What are the html5 semantic elements/tags?
+Ans. <article>
+<aside>
+<details>
+<figcaption>
+<figure>
+<footer>
+<header>
+<main>
+<mark>
+<nav>
+<section>
+<summary>
+<time>
+
+21. For controlling html elements/tags from css, which tag's attributes are used?
+Ans.class and id
+
+22. If we define a class or id attribute in any html tag, is it required for it to be present in any css file also?
+No. Its required in css only if we want to set some styles for that classes from the css file.
+
+23. <nav></nav> and <div class="nav"></div>. In both these code lines, from where nav can come?
+Ans. nav in first is coming from html and in other it is coming from css in bootstrap (becasue tag can come from html only and class, id can come from both html/css)
+
+24. a. If there is some tag defined, then can it be coming from css file?
+	No. Tags can be defined/used in html only
+	b. If there is some class defined, then can that class be coming from html5?
+	There are no pre-defined classes in html5. But we can define class in html/html5.
