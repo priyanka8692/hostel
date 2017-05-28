@@ -1,0 +1,21 @@
+Questions:
+
+Project 1:
+
+1. What is bootstrap?
+Ans. Bootstrap is a free front-end framework for faster and easy development. It has mobile first development approach
+(UI changes according  to the device like phone,laptop screen etc)
+
+2. What is jquery?
+Ans. JQuery is a Javascript library that simplifies Javascript programming.
+
+3. Why js script tag is written at the end of body tag?
+Ans. 
+	a. html page opens/loads in browser only when browser's html parser goes through it and understands it. 
+	b. when script tag comes at begining, parser stops there and waits for that js to download form server. Once js file downloaded it moves ahead for further parsing. So page will not load until js is downloaded.
+	c. But if js is at the end, parser will be done with entire UI until it reaches the js script tag. Thus user can see that portion which has already been parsed. So this makes page to render earlier which is good thing.
+OR i.e. in other words:
+Browser can't start rendering before DOM is ready and by default script tag blocks any other browser process until script file is downloaded and executed.browser will be blocked when it meets script tag in any position of the page, so DOMContentReady will not be fired until script tag is downloaded and executed. As a result, user can't see anything except white blank page until script is fully processed regardless of position of script tag.
+
+4. what does ../ means? 
+Ans. going back one folder up
