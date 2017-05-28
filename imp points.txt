@@ -125,3 +125,36 @@ Ans.
 	d. Web-Sockets:It is message based transport. Messages are delimited on wire and are re-assembled in full before the delivery to the application.It is bi-directional,full-duplex(Refers to the transmission of data in two directions simultaneously.)
 	e. long-poll- It is a kind of "hack" where server do not respond to the client request immeditely .As soon as server responds, the client sends a new request.
 	f. http streaming: It is a technique that allows the server send multiple responses to single client request.
+
+
+
+Project 3:
+1. Why is git used?
+whatever source code we write, we can save it online. Anyone can take that code, add code in it, revert somee code etc etc. It enables multiple people to work on same project.
+
+4. Example of git work:
+	a. lets say pk did some work in her local repo and pushed changes in remote repo. Now deeps pulls those changes from remote repo to her local repo and then add some changes of her own. Now deeps pushes her new changes in remote repo. Now pk needs to pull deeps changes from remote repo to her local repo to make her local repo latest.
+
+3. What are some common terms in git?
+	a. repo/repositry: It is the folder in which all code files/folders are present. repo is remotely present. It can be created from git website or from git commandline.
+	b. clone: cloning repo
+	c. pull: taking new changes from remote repo to local repo
+	d. commit: When you have changes in files in your local repo but you need to push only 3 files in remote repo. So we can choose all the files which needs to be pushed in remote repo and add them in a commit. A commit can be pushed then.
+	e. merge conflict: If we take pull from remote repo; amd new changes coming from remote repo conflicts with our local changes, its called merge conflict. In that case, git will tell us that merge conflicts are there and you need to resolve it manually.
+
+2. What are some common git commands?
+	a. git clone <repoUrl> clones/copy remote repositry to your local machine [repositry is nothing but a folder present in git remote server]
+	b. once git is cloned, git pull <branchName> is used to pull any new files/folders which other peoples pushed in that repo.
+	c. Files should be in staging area to get commited. Only commit goes to remote repo on push command. So to add files in staging area, run git add <fileName 1> <fileName2> command. This command can be run multiple times also.
+	d. For commiting all the files/folders present in staging area, run git commit -m <message text> where message text represent what changes you are adding to commit.
+	e. For pushing any commit, run git push <branchName>.
+	f. git diff command tells us all the modified files which are in unstaged area
+	g. git diff --cached command tells us all the files which are in staged area
+
+3. git push example flow: So if you have any changes in local repo which you need to push in remote repo, then folow these steps:
+	a. take a pull from remote repo. Because if you push your changes without taking latest changes from remote repo, things will break.
+	For example if you took pull 2 days back, and in these 2 days, many people pushed changes in remote repo. Then as you havent taken any pull, your local repo doesnt have changes of last 2 days. Now if do push, then things can break. So always take a pull just before doing a push.
+	b. git add <file1> <file2> to add all of your changes in staging area. You can run this command multiple times separetly also for each file.
+	c. git commit -m <message text> to commit all of the changes present in staging area.
+	d. git push <repoName> to push that commit in remote repo.
+
