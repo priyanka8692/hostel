@@ -19,3 +19,57 @@ Browser can't start rendering before DOM is ready and by default script tag bloc
 
 4. what does ../ means? 
 Ans. going back one folder up
+
+Project 2:
+
+1. What is DTD(Document Type definition)
+Ans.DTD define the structure and legal element and attribute of XML document. DTD defines rules for the tags ,elements,attribues written in html and xml.
+
+2. What is diff between html and html5
+Ans. Key difference are:
+	*HTML5 allows javascript to run in both background or also in same thread as browser interface. We can create a worker javascript that runs in background. But HTML does not allows Javascript to run in background; it run in same thread as browser interface.
+	*HTML5 has lot new features like header, footer section etc and many other things.
+	*HTML5 support web socket protocol
+
+3. <!DOCTYPE html> meaning?
+Ans.<!DOCTYPE html> declaration means that
+	a. html page is html5. 
+	b. In other words, html page should follow DTD of html5 type. i.e. now html content should follow all the rules of html5 DTD.
+   
+4. why html5 DTD tag i.e. <!DOCTYPE html> is required when using bootstrap?
+Ans. <!DOCTYPE html> means html page is html5. When using bootstrap css files, our page should be html5 because bootstrap css uses many html5 features. So our html should use this DTD tag to make it html5.
+
+5. What is lang in <html lang="en">
+Ans.lang is used to declare language of the Web Page 
+
+6. What happens when u define utf-8 charset (i.e. <meta charset="utf-8">) in your html?
+Ans.The charset attribute specifies the character encoding for the HTML document. This means that you can't use any character in html page which is not a part of utf-8 charset (if utf-8 is defined as charset.)
+
+7. What is viewport?
+Viewport is user's visible area of web page that varies with device (as different devices have different width). <meta> viewport element give the browser instruction how to control page dimension and scaling.
+
+8. What is the meaning of width=device-width and initial-scale=1? i.e. (<meta name="viewport" content="width=device-width, initial-scale=1">)
+Ans.width=device-width set the width of the page to follow the screen width of the device.
+    initial-scale=1.0 - set initial zoom level when the page is loaded in the browser.
+
+9. What is diff between container and conatiner-fluid class?
+Ans. container class provides fixed width container and conatiner-fluid class provide full width container covering entire width of the viewport.
+
+10. Can container class be nested?
+Ans. NO 
+
+11. What is div tag in html?
+Ans. div tag is used to group the block elements to format them with CSS.
+
+12. What is bootstrap grid system?
+Ans.bootstrap grid system allow upto 12 coloumn across the page 
+
+13. What is the size of bootstrap grid row?
+Ans. 12
+
+14. What is diff between tag and attribute in html?
+<a href="page.html">Page1 Link</a>
+In above line, 'a' is tag. href is attribute. So for every tag, there can be various attributes like href, class, id etc.
+
+15. What is sm in col-sm-4? Can it have other values also?
+Ans.For small devices we will use the .col-sm-* classes. Yes we can have other values also.

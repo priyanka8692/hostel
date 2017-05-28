@@ -1,6 +1,11 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 	<title>login page </title>
+
+	<!-- meta data -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<!--CSS file section -->
 	<!-- bootstrap section -->
 	<link rel="stylesheet" href="../css/bootstrap.min.css">
@@ -9,13 +14,53 @@
 
 <body>
   <!-- main content -->
-  <br>
-  <center>Username : <input type="text" ></center>
-  <br>
-  <center>Password : <input type="text" ></center>
-  <br>
-  <center><button type="button">Login</button>
+  <div class="container">
 
+  <!--Heading -->
+  <div class="row">
+  	<div class="col-sm-12">
+  		<h1 class="center">
+  			Login
+  		</h1>
+  	<div>
+  </div>
+
+  <div class = "row">
+  <!-- headings and text box -->
+  	<div class="col-sm-1">
+  		<h4 class="center">
+  			Username:
+  		</h4>
+  	</div>
+
+    <div class="col-sm-11">
+    	<input type="text" name="username">
+    </div>
+   </div>
+
+
+    <div class="container">
+    	<div class="row">
+    		<div class="col-sm-1">
+    			<h4 class="center">
+    			Password:
+    			</h4>
+    		</div>
+    			<div class="col-sm-11">
+    			<input type="text" name="password">
+    		</div>
+   		</div>
+    </div>
+
+
+    <!-- login button -->
+    <div class="container">
+    	<div class="row">
+    		<div class="col-sm-12">
+    			<button>Login</button>
+    		</div>
+    	</div>
+    </div>
   <!-- JS files section -->
 	<!-- jquery -->
 	<script src="../js/jquery-3.2.1.min.js"></script>  <!-- ../ move back one folder -->
