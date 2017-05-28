@@ -1,0 +1,311 @@
+//overloading
+
+/* package codechef; // don't place package name! */
+
+
+import java.util.*;
+
+import java.lang.*;
+
+import java.io.*;
+
+
+
+/* Name of the class has to be "Main" only if the class is public. */
+
+Example 1:
+
+class MyBaseClass{
+   
+public void disp()
+   
+{
+       
+System.out.println("Parent class method");
+   
+}
+    
+protected void disp(int a)
+   {
+      
+System.out.println("Child class method");
+   
+}
+
+}
+
+
+class MyChildClass  {
+
+   
+public static void main( String args[]) {
+    
+
+MyBaseClass obj = new MyBaseClass();
+      
+obj.disp(10);
+      
+obj.disp();
+   
+}
+
+}
+
+
+output:
+Child class method
+
+Parent class method
+
+
+Example 2:
+import java.util.*;
+
+import java.lang.*;
+
+import java.io.*;
+
+
+/* Name of the class has to be "Main" only if the class is public. */
+
+class MyBaseClass{
+
+   
+public void disp()
+   {
+       
+System.out.println("Parent class method");
+   
+}
+    
+
+private void disp(int a)
+   {
+      
+System.out.println("Child class method");
+   
+}
+
+}
+
+class MyChildClass  {
+
+   
+public static void main( String args[]) {
+     
+MyBaseClass obj = new MyBaseClass();
+      
+obj.disp(10);
+      
+obj.disp();
+   
+}
+
+}
+
+
+Output:
+Main.java:22: error: disp(int) has private access in MyBaseClass
+      
+obj.disp(10);
+         
+^
+1 error
+
+***********************************************************************************
+/*Overriding:
+Method gets override at run time.
+1)Variables do not ger overriden.Polymorphism does not occur in variable
+2) Variable gets value at compile time.*/
+
+Example 1:
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+
+class A {
+    int a=1;
+    public void print(){
+        System.out.println("Priyanka");
+    }
+}
+class B extends A {
+    int a=2;
+    
+    public void print(){
+      
+        System.out.println("Wipro");
+        super.print();
+    }
+    
+    
+}
+class Codechef
+{
+	public static void main (String[] args) 
+	{
+		A a1 = new B();
+		System.out.println(a1.a);
+		a1.print();
+	
+	
+		
+	}
+}
+
+Output 
+1
+
+Wipro
+
+Priyanka
+
+
+Example 2
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+
+class A {
+    int a=1;
+    public void print(){
+        System.out.println("Priyanka");
+    }
+}
+class B extends A {
+    int a=2;
+    
+    public void print(){
+        System.out.println(a);
+        System.out.println("Wipro");
+        super.print();
+    }
+    
+    
+}
+class Codechef
+{
+	public static void main (String[] args) 
+	{
+		A a1 = new B();
+		System.out.println(a1.a);
+		a1.print();
+	
+	
+		
+	}
+}
+
+Output:
+1
+
+2
+
+Wipro
+
+Priyanka
+
+************************************************************************
+Example 3:
+
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+
+class A {
+    int a=1;
+    public void print(){
+        System.out.println("Priyanka");
+    }
+}
+class B extends A {
+    int a=2;
+    
+    public void print(){
+        
+        
+        System.out.println("Wipro");
+    }
+    
+    
+}
+class Codechef
+{
+	public static void main (String[] args) 
+	{
+		B a1 = new B();
+		System.out.println(a1.a);
+		a1.print();
+	
+	
+		
+	}
+}
+Output:
+2
+
+Wipro
+
+Example 4:
+/* package codechef; // don't place package name! */
+
+
+import java.util.*;
+
+import java.lang.*;
+
+import java.io.*;
+
+
+/* Name of the class has to be "Main" only if the class is public. */
+
+class Human{
+    
+
+static void  eat()
+   {
+      
+System.out.println("Human is eating");
+   
+}
+
+}
+
+class Boy extends Human{
+    
+
+static void eat(){
+       
+      
+
+System.out.println("Boy is eating");
+   
+
+}
+   
+
+public static void main( String args[]) {
+      
+
+Human obj = new Boy();
+      
+obj.eat();
+   
+}
+
+
+}
+
+
+Output :
+Human is eating
