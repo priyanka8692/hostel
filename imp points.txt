@@ -116,3 +116,12 @@ Ans. nav in first is coming from html and in other it is coming from css in boot
 	No. Tags can be defined/used in html only
 	b. If there is some class defined, then can that class be coming from html5?
 	There are no pre-defined classes in html5. But we can define class in html/html5.
+
+25. What is difference between tcp, http1.0, http1.1, http2.0, websockets, long poll, http streaming protocols
+Ans. 
+	a. TCP: Transmission Control Protocol is a standard which defines how to establish and maintain network conversation
+	b. http1.0:Request-response transport protocol layered on TCP.Client makes full request and server gives full response  and then the connection is closed.
+	c. http1.1:maintain the request-response of http1.0 but all the connection for multiple request/responses is reused and not closed.
+	d. Web-Sockets:It is message based transport. Messages are delimited on wire and are re-assembled in full before the delivery to the application.It is bi-directional,full-duplex(Refers to the transmission of data in two directions simultaneously.)
+	e. long-poll- It is a kind of "hack" where server do not respond to the client request immeditely .As soon as server responds, the client sends a new request.
+	f. http streaming: It is a technique that allows the server send multiple responses to single client request.
