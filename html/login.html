@@ -16,51 +16,41 @@
   <!-- main content -->
   <div class="container">
 
-  <!--Heading -->
-  <div class="row">
-  	<div class="col-sm-12">
-  		<h1 class="center">
-  			Login
-  		</h1>
-  	<div>
-  </div>
+    <!-- Login form -->
+    <form action="success.html" method="get">
+      <!-- Login heading -->
+      <div class="row">
+        <div class="col-sm-12">
+          <h1>
+            Login
+          </h1>
+        <div>
+      </div>
 
-  <div class = "row">
-  <!-- headings and text box -->
-  	<div class="col-sm-1">
-  		<h4 class="center">
-  			Username:
-  		</h4>
-  	</div>
+      <!-- username -->
+      <div class = "row">
+        <div class="col-sm-12">
+          <label for="username">Username:</label>
+          <input type="text" name="username" id="username"/>
+        </div>
+      </div>
 
-    <div class="col-sm-11">
-    	<input type="text" name="username">
-    </div>
-   </div>
+      <!-- Password -->
+      <div class="row">
+        <div class="col-sm-12">
+          <label for="password">Password:</label>
+          <input type="password" name="password" id="password"/>
+        </div>
+      </div>
 
+      <!-- login button -->
+      <div class="row">
+        <div class="col-sm-12">
+          <button type="submit">Login</button>
+        </div>
+      </div>    
+    </form>
 
-    <div class="container">
-    	<div class="row">
-    		<div class="col-sm-1">
-    			<h4 class="center">
-    			Password:
-    			</h4>
-    		</div>
-    			<div class="col-sm-11">
-    			<input type="text" name="password">
-    		</div>
-   		</div>
-    </div>
-
-
-    <!-- login button -->
-    <div class="container">
-    	<div class="row">
-    		<div class="col-sm-12">
-    			<button>Login</button>
-    		</div>
-    	</div>
-    </div>
   <!-- JS files section -->
 	<!-- jquery -->
 	<script src="../js/jquery-3.2.1.min.js"></script>  <!-- ../ move back one folder -->

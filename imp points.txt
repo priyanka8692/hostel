@@ -3,7 +3,7 @@ Questions:
 Project 1:
 
 1. What is bootstrap?
-Ans. Bootstrap is a free front-end framework for faster and easy development. It has mobile first development approach
+Ans. Bootstrap is a free front-end framework for faster and easy development. It has mobile first development approach (means it adjusts UI according to device width)
 (UI changes according  to the device like phone,laptop screen etc)
 
 2. What is jquery?
@@ -20,8 +20,8 @@ Browser can't start rendering before DOM is ready and by default script tag bloc
 4. what does ../ means? 
 Ans. going back one folder up
 
-Project 2:
 
+Project 2:
 1. What is DTD(Document Type definition)
 Ans.DTD define the structure and legal element and attribute of XML document. DTD defines rules for the tags ,elements,attribues written in html and xml.
 
@@ -74,21 +74,23 @@ In above line, 'a' is tag. href is attribute. So for every tag, there can be var
 15. What is sm in col-sm-4? Can it have other values also?
 Ans.For small devices we will use the .col-sm-* classes. Yes we can have other values also.
 
-16. What is diff between html and xml? 
+
+Project 3:
+1. What is diff between html and xml? 
 Ans 1)html was designed to specify how data should be displayed on web page where as xml was designed to hold the data
 	2)html has pre-defined tags but xml can have user defined tags
 
-17. What is diff between html, html5 and xhtml?
+2. What is diff between html, html5 and xhtml?
 Ans. html : It is used to display data in browser.
 	 html5:It is better version of html which is not just text but includes medio, video , audio  etc. features also
 	 xhtml: Its html4 with strict rules of xml. i.e. a tag if defined should also be closed i.e. just <a ...> is wrong. it should be <a ...>..</a>.
 
-18. ***TODO - col-sm-3 defining diff layouts for various kind of devices ***
+3. ***TODO - col-sm-3 defining diff layouts for various kind of devices ***
 19. Whats is difference between semantic and non-semantic elemtns/tags in html5?
 Sementic elements/tag has clear meaning to both browser and developer from its name itself. For e.g. header, footer, article, section etc
 Non-semantic elements use is not clear from its name. For e.g. div, span etc
 
-20. What are the html5 semantic elements/tags?
+4. What are the html5 semantic elements/tags?
 Ans. <article>
 <aside>
 <details>
@@ -103,21 +105,23 @@ Ans. <article>
 <summary>
 <time>
 
-21. For controlling html elements/tags from css, which tag's attributes are used?
+5. For controlling html elements/tags from css, which tag's attributes are used?
 Ans.class and id
 
-22. If we define a class or id attribute in any html tag, is it required for it to be present in any css file also?
+6. If we define a class or id attribute in any html tag, is it required for it to be present in any css file also?
 No. Its required in css only if we want to set some styles for that classes from the css file.
 
-23. <nav></nav> and <div class="nav"></div>. In both these code lines, from where nav can come?
+7. <nav></nav> and <div class="nav"></div>. In both these code lines, from where nav can come?
 Ans. nav in first is coming from html and in other it is coming from css in bootstrap (becasue tag can come from html only and class, id can come from both html/css)
 
-24. a. If there is some tag defined, then can it be coming from css file?
+8. a. If there is some tag defined, then can it be coming from css file?
 	No. Tags can be defined/used in html only
 	b. If there is some class defined, then can that class be coming from html5?
 	There are no pre-defined classes in html5. But we can define class in html/html5.
 
-25. What is difference between tcp, http1.0, http1.1, http2.0, websockets, long poll, http streaming protocols
+
+Project 4:
+1. What is difference between tcp, http1.0, http1.1, http2.0, websockets, long poll, http streaming protocols
 Ans. 
 	a. TCP: Transmission Control Protocol is a standard which defines how to establish and maintain network conversation
 	b. http1.0:Request-response transport protocol layered on TCP.Client makes full request and server gives full response  and then the connection is closed.
@@ -128,11 +132,11 @@ Ans.
 
 
 
-Project 3:
+Project 5:
 1. Why is git used?
 whatever source code we write, we can save it online. Anyone can take that code, add code in it, revert somee code etc etc. It enables multiple people to work on same project.
 
-4. Example of git work:
+2. Example of git work:
 	a. lets say pk did some work in her local repo and pushed changes in remote repo. Now deeps pulls those changes from remote repo to her local repo and then add some changes of her own. Now deeps pushes her new changes in remote repo. Now pk needs to pull deeps changes from remote repo to her local repo to make her local repo latest.
 
 3. What are some common terms in git?
@@ -142,7 +146,7 @@ whatever source code we write, we can save it online. Anyone can take that code,
 	d. commit: When you have changes in files in your local repo but you need to push only 3 files in remote repo. So we can choose all the files which needs to be pushed in remote repo and add them in a commit. A commit can be pushed then.
 	e. merge conflict: If we take pull from remote repo; amd new changes coming from remote repo conflicts with our local changes, its called merge conflict. In that case, git will tell us that merge conflicts are there and you need to resolve it manually.
 
-2. What are some common git commands?
+4. What are some common git commands?
 	a. git clone <repoUrl> clones/copy remote repositry to your local machine [repositry is nothing but a folder present in git remote server]
 	b. once git is cloned, git pull <branchName> is used to pull any new files/folders which other peoples pushed in that repo.
 	c. Files should be in staging area to get commited. Only commit goes to remote repo on push command. So to add files in staging area, run git add <fileName 1> <fileName2> command. This command can be run multiple times also.
@@ -151,10 +155,50 @@ whatever source code we write, we can save it online. Anyone can take that code,
 	f. git diff command tells us all the modified files which are in unstaged area
 	g. git diff --cached command tells us all the files which are in staged area
 
-3. git push example flow: So if you have any changes in local repo which you need to push in remote repo, then folow these steps:
+5. git push example flow: So if you have any changes in local repo which you need to push in remote repo, then folow these steps:
 	a. take a pull from remote repo. Because if you push your changes without taking latest changes from remote repo, things will break.
 	For example if you took pull 2 days back, and in these 2 days, many people pushed changes in remote repo. Then as you havent taken any pull, your local repo doesnt have changes of last 2 days. Now if do push, then things can break. So always take a pull just before doing a push.
 	b. git add <file1> <file2> to add all of your changes in staging area. You can run this command multiple times separetly also for each file.
 	c. git commit -m <message text> to commit all of the changes present in staging area.
 	d. git push <repoName> to push that commit in remote repo.
 
+6. **TODO** What's meaning of "git pull origin master" command?
+
+Project 6:
+1. How to close html tag
+Ans. Two ways:
+	a. <p>...</p> [open tag and close tag are sperate. Used when there is some content needs to be defined between tags. For e.g. <p>Hello</p>]
+	b. <br/> [opening and closing of tag is happening together. Used when no content needs to be set between tags. For example br tag.]
+
+2. How to define label for any html element and whats the benefit of defining in that way?
+Ans. use <label for="elementId">labelName</label>. Benefit of using it is that:
+	a. When layout changes as per device width, it handles label and input displayt properly.
+	b. For blind users, screen reader reads proprely that this label is for this input
+
+3. What are values of type attribute in button tag and for what cases those values are used?
+Ans.  button, submit and reset ***TODO***
+
+4. What is form tag in html and whats its use?
+Ans. form tag in html is used to create form for user input. It is used to pass user data to a specified URL.
+
+5. What does action attribute in form tag do?
+Ans. It does 2 things:
+	a. Sends form's data to the value url.
+	b. Not only it sends form's data to value url, it goes to that url also.
+
+6. What if we dont want to go to some other page on form submit?
+Ans Leave action value empty
+
+7. What does method attribute in form tag do?
+Ans.The method attribute specifies how to send the form data. i.e. either by GET or POST
+The form data can be sent as URL variable(with method: GET)or http post transaction(with method="POST").
+
+8. How to write form tag to make it submittable?
+Ans.A form tag can be made submittable by using input with type="submit". For e.g. <input type="submit"/> and <button type="submit"/> both are correct.
+
+9. What is difference between get and post methods of sending data?
+Ans. 
+	a. GET method sends data in url in format of key value pair which is known as query string paramter For e.g. .../.../?key1=value1&key2=value2 (In this example, key1=value1&key2=value2 is called query string parameters)
+	b. POST method sends data in message body. message body is part of request header.
+
+10. **TODO** What is request header and response header isn http request
