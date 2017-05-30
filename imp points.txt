@@ -201,4 +201,23 @@ Ans.
 	a. GET method sends data in url in format of key value pair which is known as query string paramter For e.g. .../.../?key1=value1&key2=value2 (In this example, key1=value1&key2=value2 is called query string parameters)
 	b. POST method sends data in message body. message body is part of request header.
 
-10. **TODO** What is request header and response header isn http request
+10. **TODO** What is request header and response header in http request
+
+
+Project 7:
+1. What is diff between URL, request, response, request header, response header, html?
+Ans. 
+	a.  URL: ** TODO ** 
+	b. 	Request: When URL is entered, many info goes to server along with URL. This whole set of info is called a request. 
+	c. Request has following things in it:
+		i. URL
+		ii. request headers: In request header, we can pass additional info to server. Browser also adds some additional info by itself in request header For e.g. user-agent field.
+		iii. query string paramters: query string parameters can be add by us by submitting a form as GET. It contains key value pair of form inputs. These key value pair are also visible in URL. For e.g. .../.../?key1=value1&key2=value2
+		iv. Form data: It can be added by submitting a form as POST. Its a key value pair but not visible in URL.
+	d. Why request is made by user: In 2 cases request is done:
+		i.  For getting some web resource like html, css and js. Usually htmls, css and js which your browser can understand are not in your local machine. They come from some server. For e.g. facebook page.
+		ii. For asking server to do some action
+	e. Response: When we request something from server, server takes that request and do some action. After doing that action, it sends some response. In that response, server sends html, js and css files. Server can also send other types of files also like json, xml, pdf, img, doc etc.
+	f. Response has following things in it:
+		i. web resource file as response like html, js, css, img, doc, pdf, json, xml
+		ii. Response header: **TODO: ak*
