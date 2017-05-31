@@ -212,7 +212,7 @@ Ans.
 	c. Request has following things in it:
 		i. URL
 		ii. request headers: In request header, we can pass additional info to server. Browser also adds some additional info by itself in request header For e.g. user-agent field.
-		iii. query string paramters: query string parameters can be add by us by submitting a form as GET. It contains key value pair of form inputs. These key value pair are also visible in URL. For e.g. .../.../?key1=value1&key2=value2
+		iii. query string paramters: query string parameters can be added by us by submitting a form as GET. It contains key value pair of form inputs. These key value pair are also visible in URL. For e.g. .../.../?key1=value1&key2=value2
 		iv. Form data: It can be added by submitting a form as POST. Its a key value pair but not visible in URL.
 	d. Why request is made by user: In 2 cases request is done:
 		i.  For getting some web resource like html, css and js. Usually htmls, css and js which your browser can understand are not in your local machine. They come from some server. For e.g. facebook page.
@@ -221,3 +221,53 @@ Ans.
 	f. Response has following things in it:
 		i. web resource file as response like html, js, css, img, doc, pdf, json, xml
 		ii. Response header: **TODO: ak*
+
+Project 8:
+1. Where should we use html, css and javascript
+Ans 
+	a. html: data and its layout is present in html. It can itself contain css and javascript content but it should be avoided for better layering/clarification in code.
+		i. It can handle css by using style tag in head (entire css file) OR style attribute in any tag (for inline css). [But its not preferred. Always write css in separate css file for better layering of code.]
+		ii. It can handle js by using script tag in head/body (usually we write it in the end of body tag). OR we can add inline js directly in any tag as different event attributes. For e.g. button tag has onclick event attribute which can have javascript as its value.
+	b. css : all the styles like color, background color, font style, position, font size etc should be present in css.
+	c. javascript: can do various things:
+		i. it can handle user actions/inputs For e.g. click, double click, right click, keyboard press etc
+		ii. it can send request and get response from server.
+		iii. it can manupulate html **TODO**
+2. What is difference between style tag and style attribute?
+Ans. style tag : The <style> tag is used to define style information for an HTML document.
+     Inside the <style> element you specify how HTML elements should render in a browser.
+     style attribute :The style attribute specifies an inline style for an element.
+   
+3. How a css file content can be written in html and is it preferred to do so?
+Ans. CSS can be added to html in 3 ways :
+   a)Inline - by using the style attribute in HTML elements
+   b)Internal- by using a <style> element in the <head> section
+   c)External- by using an external CSS file [preferred as there is proper layering of code]
+
+4. How a JS file content can be written in html and is it preferred to do so?
+Ans. JS file can be witten in html 
+	a. Inline - by using event attributes like onClick etc.
+	b. Internal - using <script> tag.
+	b. External - by using external js file [preferred as there is proper layering of code. data and its layout should be in html, style should be in css and actions should be in js]
+    
+
+5. How a inline css can be written in html and is it preferred to do so?
+Ans. Inline css: It is used to apply a unique style to a single html tag. An inline CSS uses the style attribute of a html element/tag.
+   It is not preferable to use inline css because there should be proper layering of code for better design and code clarification. style related things should be in css and not in html file.
+
+6. How a inline js can be written in html and is it preferred to do so?
+Ans. inline js can be written as value of event attributes For e.g. <button onClick="Console.Log('Hii')">
+Inline js is not good to be used.The reason is not performace based but more about layering, maintainability, better design, usability etc. action related things should be in js file only.
+
+7. What is html parser and how does it parse html?
+Ans.HTML Parser is a code which parses html. i.e. it considers html as tree with every tag as node. It goes through every node/tag, understands what that tag wants to display and displays it.
+
+8. Why html parser stops for js file download?
+Ans. js is able to make changes in the html and css code; so parser wait for the js to download so that it parses further html only after js makes changes in it (if any).That's why html parser stops for js to download. Its better to write js file at end of body tag as parser can parse and display entire data. Now if there are some changes to be done by js file, js file can do it and parser will re-parse and render those changed html.
+
+9. Does html parser stops for css file download also? And if yes, why dont we write css also in the end of body tag?
+Ans. Yes, it stops for css download also. As we know that parser parses html and renders it. If there will be no css styles while parsing, it wil not be able to apply styles to it and thus displayed data will be without styles which is bad.
+
+10. What are different event attributes for different tags? For e.g. button tag has onclick action atrribute
+Ans. Check mouse, keyboard, form etc event attributes at https://www.w3schools.com/jsref/dom_obj_event.asp
+	
