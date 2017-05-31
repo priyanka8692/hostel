@@ -17,7 +17,7 @@
   <div class="container">
 
     <!-- Login form -->
-    <form action="success.html" method="post">
+    <form action="success.html" onsubmit="loginFormSubmit()" method="post">
       <!-- Login heading -->
       <div class="row">
         <div class="col-sm-12">
@@ -56,6 +56,11 @@
 	<script src="../js/jquery-3.2.1.min.js"></script>  <!-- ../ move back one folder -->
 	<!-- bootstrap -->
 	<script src="../js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    function loginFormSubmit() {
+      alert("form submitted");
+    }
+  </script>
 	
 </body>
 </html>

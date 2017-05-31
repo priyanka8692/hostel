@@ -232,7 +232,7 @@ Ans
 	c. javascript: can do various things:
 		i. it can handle user actions/inputs For e.g. click, double click, right click, keyboard press etc
 		ii. it can send request and get response from server.
-		iii. it can manupulate html **TODO**
+		iii. it can manupulate html or css content
 2. What is difference between style tag and style attribute?
 Ans. style tag : The <style> tag is used to define style information for an HTML document.
      Inside the <style> element you specify how HTML elements should render in a browser.
@@ -270,4 +270,19 @@ Ans. Yes, it stops for css download also. As we know that parser parses html and
 
 10. What are different event attributes for different tags? For e.g. button tag has onclick action atrribute
 Ans. Check mouse, keyboard, form etc event attributes at https://www.w3schools.com/jsref/dom_obj_event.asp
+
+Project 9:
+1. **TODO ak: effect of order change of js files import (script tags)
+2. When to use type attribute of script tag and when to use src attribute of script tag?
+Ans type attribute is used when we write internal js code. src attribute is used when we add external js file in html.
+3. What different combinations of action and onsubmit attributes can be used?
+Ans. 
+	a. only action attribute
+	b. both action attribute and onsubmit attribute
+	c. only onsubmit attribute
+4. If both action attribute and onsubmit attribute are used, which is called first?
+Ans onsubmit attribute
+5. What is alert in javascript?
+Ans. alert displays an alert box with specified message and ok button.
+example: alert("hello")
 	
