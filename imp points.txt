@@ -285,4 +285,40 @@ Ans onsubmit attribute
 5. What is alert in javascript?
 Ans. alert displays an alert box with specified message and ok button.
 example: alert("hello")
+
+Project 10:
+1. What is MVVM (Model-View-ViewModel) pattern?
+Ans. Ususally MVVM pattern is used in client side and MVC pattern is used in server side (but its not necessity). Entire client code we write is divided in 3 layers. 
+	a. Model - deals with data which is shown in UI. This data dealing can be fetching data from database, fetching data from server, storing data, data manipulation etc. But this layer has nothing to do with UI.
+	b. View - which contains code which is responsible for showing UI of our application. This layer responsible only for how data is shown. It never take cares of what data is shown
+	c. ViewModel: This layer handles interaction between Model and View. So the code where we need to bind data and UI comes in ViewModel.
+2. Specialites of Model, View and ViewModel layers
+	a. Model - It has following features:
+		i. It can fetch data from database/server
+		ii. It can save/post data to database/server
+		iii. It can store data
+		iv. It can manipulate data
+		v. It has nothing to do with UI controls, it only takes care about data
+		vi. In client side, Model should always be js. That js should contain code only related to data and there should not be anything realted to UI.
+		vii. It never interacts with View layer or with ViewModel layer.
+	b. View - It has following features:
+		i. It has code about UI For e.g. html controls (<p>, <div>), css, fonts etc
+		ii. html and css are always part fo view layer only. this is because both html and css controls/manipulates UI. They can change UI but they cannot change data without the help of js.
+		iii. It can have js files only. But those js files should have code only related to UI. For e.g. js for changing animation. Any js having code for data cannot be part of View layer.
+		iii. It can never interact with Model layer. But it can interact with ViewModel layer.
+	c. ViewModel - It has following features
+		i. It has that code which binds both UI and data
+		ii. Any user actions handler is present in this layer. For e.g. if a user clicked on a button, we want to do some changes in UI or data. Then that action method should be present in this layer.
+		iii. This layer can interact with View layer and also with Model layer.
+3. How to write code in a way that it follows MVVM pattern?
+Ans. a. Always write code which changes UI in any way in View layer only
+	b. Always write code which changes only data in Model layer only
+	c. Any call to server/database which returns data(e.g. data in xml/json format) should be present in Model layer.
+	d. Any call to server/database which returns UI (e.g. html) should be present in ViewModel layer. [Because making call to server to return html page is not UI related thing, so it should not be in View layer. But as it is returning UI and not data, so it should be in ViewModel and not in Model layer.]
+	e. html, css, fonts should be in View layer
+	f. js which handles UI like animation should be in View layer
+	g. any user action handling should be in ViewModel layer
+	h. data storage should be in model layer.
+2. What is MVC pattern?
+3. What is diff between MVC and MVVM
 	

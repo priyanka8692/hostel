@@ -1,5 +1,3 @@
-TODO:
-
-1. See form tag properly
-2. Play with form
-3. 
+1. read about MVVM pattern
+2. read about mvc pattern
+3. read about difference between MVVm and MVC
