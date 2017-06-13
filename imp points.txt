@@ -303,13 +303,15 @@ Ans. Ususally MVVM pattern is used in client side and MVC pattern is used in ser
 		vii. It never interacts with View layer or with ViewModel layer.
 	b. View - It has following features:
 		i. It has code about UI For e.g. html controls (<p>, <div>), css, fonts etc
-		ii. html and css are always part fo view layer only. this is because both html and css controls/manipulates UI. They can change UI but they cannot change data without the help of js.
-		iii. It can have js files only. But those js files should have code only related to UI. For e.g. js for changing animation. Any js having code for data cannot be part of View layer.
+		ii. html and css are always part fo view layer only. this is because both html and css defines UI.
+		iii. It can have js files also, but those js files should have code only related to UI. For e.g. js for changing animation. Any js having code for data cannot be part of View layer.
 		iii. It can never interact with Model layer. But it can interact with ViewModel layer.
 	c. ViewModel - It has following features
 		i. It has that code which binds both UI and data
 		ii. Any user actions handler is present in this layer. For e.g. if a user clicked on a button, we want to do some changes in UI or data. Then that action method should be present in this layer.
 		iii. This layer can interact with View layer and also with Model layer.
+		iv. ViewModel can have code to change UI or change data if that change needs to be done as part of some user action.
+
 3. How to write code in a way that it follows MVVM pattern?
 Ans. a. Always write code which changes UI in any way in View layer only
 	b. Always write code which changes only data in Model layer only
@@ -319,6 +321,89 @@ Ans. a. Always write code which changes UI in any way in View layer only
 	f. js which handles UI like animation should be in View layer
 	g. any user action handling should be in ViewModel layer
 	h. data storage should be in model layer.
-2. What is MVC pattern?
-3. What is diff between MVC and MVVM
-	
+2. What is MVC pattern? **TODO:pk**
+3. What is diff between MVC and MVVM **TODO:pk**
+
+Project 11:
+1. As per MVVM pattern, is it good practise to write js code within html file?
+Ans No. Because html file is part of View layer. js code can be part of View or ViewModel or Model layer depending on situation. For e.g. if we wrote js code in html to handle some action like onClick. Now we know that action handling should be done in ViewModel layer. So writing js code in same html file doesnt allow us to separate code as per their layer.
+
+2. What is event, event raise, event listener in javascript?
+Ans: Whenever event is raised using event raiser/dispatcher, all added event listeners are called.
+event - 
+	a. Event is kind of notification which can be raised when some particular thing/user action happens. For e.g. raising click event when user does a mouse click.
+	b. Event can be pre-defined. Or user can define custom events also. 
+	c. For e.g. click event is pre-defined in javascript.
+	b. We can create custom event also using Event and CustomEvent For e.g. var event = new Event('payal') or var event = new CustomEvent('payal', {"customMessage": "payalCustomMessage"})
+event raise - 
+	a. When event is raised, all the listeners of that event are called and executed. event object itself also goes to those event listeners.
+	b. When user clicks using his mouse, javascript has pre-written code which raises click event
+	c. Similarly we can raise custom payal event when something happens. For e.g. when user presses ctrl+shft+p+k, then we can raise payal event using dispatchEvent. For e.g. document.getElementById("loginForm").dispatchEvent(event)
+event listener - 
+	a. event can be listened by any html control. 
+	b. We can register any event listener to a event.
+	c. When a event raised, all the event listener registered to that event are called. 
+	d. When click event raised, we can register a event listener to a html control via 2 ways.
+		i. onClick. Whatever method is written in onClick, it behaves as listener. For e.g. in onCLick="loginFormSubmit()", loginFormSubmit is the event listener of click event
+		ii. addEventListener. For e.g. addEventListener('click', loginFormSubmit). 
+		iii. Both i and ii ways are same thing. Both i and ii are applied on a html control. For e.g. <button id="loginButton" onclick="loginFormSubmit()"/> or document.getElementById("loginButton").addEventListener('click', loginFormSubmit). Both are sme thing.
+	b. Similarly for payal event, we can register a listener by addEventListener. For e.g. document.getElementById("loginButton").addEventListener('payal', payalSubmit). In case of custom event, there is no onPayal; only way is addeventlistener. Here payalSubmit is the event listener
+	c. In above examples loginFormSubmit and payalSubmit are called event listener methods
+
+3. How to pass additional data from event to event listener?
+Ans. In javascript, we can use CustomEvent to create a event which can take additional data. When this event raises, event listener is called. Event listener can get this event and its additional data. If loginFormSubmit is the event listener of payal event, then it can be defined in 2 ways:
+	a. function loginFormSubmit() { // write code here}. Here parameters are empty. This is done if we dont want to use event object in event listener
+	b. function loginFormSubmit(event) { // write code here}. Here we have passed one parameter named event. Always first passed parameter in event listener is event itself. So here event is actually payal event object. Now we can use this event object in event listener method to get event's additional data
+	c. So, lets say if we created payal event 'new CustomEvent('payal', {"customMessage": "payalCustomMessage"})'; and event listener as 'function loginFormSubmit(event)'; then i can use event.customMessage in event listerner method to get customMessage value. So, in this way we can pass any data from event to event listener
+	d. pre-defined events like onkeypress of javascript is one of the exmaple which passes additional data. For e.g. event.keyCode can be done in key event listener to get which key was pressed. 
+
+4. Example of event, event raiser/disptacher, event listener
+Ans.
+	a. Lets say we have username textbox.
+	<input type="text" name="username" id="username" />
+	b. We want to listen keypress on this textbox. So we register an event listener to textbox using onkeypress(its a predefined event in java like onclcik)
+	<input type="text" name="username" id="username" onkeypress="onKeyPressListener()"/>
+	c. We registered onKeyPressListener method using onkeypress. We could have done it using addeventListener also. i.e. instead of adding onkeypress in control, we could have added this line in js, docuemnt.getElementById("username").addeventlistener("keypress", onKeyPressListener)
+	d. Here keypress is event. onkeypresslistener is event listener method. onkeypress is a way to attach event listener to event.
+	e. Now lets implement onKeyPressListener method
+	function onKeyPressListener() {
+		// do what u have to do
+	}
+	f. Now if want to know which key was pressed, then event listener can know this things from event object only. We can get event object in event listener method in this way:
+	function onkeypresslistener(event) {
+		// do what u have to do
+	}
+	g. In this event listener method, we want that if user pressed enter or shift key, then raise payal event on a button (we have defined this button as <button id="payalButton" />)
+	function onkeypresslistener(e) {
+		// 13 is the code for enter key; 16 for shift key
+		if (e.keyCode == 13) {
+			var event = new CustomEvent('payal', {'keyPressed', 'Enter'});
+			document.getElementById("payalButton").disptachEvent(event); // here we raised event to payalButton html control
+		} else if (e.keyCode == 16) {
+			var event = new CustomEvent('payal', {'keyPressed', 'Shift'});
+			document.getElementById("payalButton").disptachEvent(event); // here we raised event to payalButton html control
+		}
+	}	
+	h. Even though we raised payal event on payalButton html control, nothing will happen because our html control is <button id="payalButton" />. Here we havent registered any event listener for payal event. So on raising payal event to this control, nothing will happen. Lets register event listener here, so that whenever payal event is raised to this control, event listener can listen this event and call its method. i.e. <button id="payalButton" onpayal="" />. But this is wrong as there is nothing called onpayal. In custom event listener, only way to register is addeventlistener. So in some starting javascript constructor, we should have registered payal event listener in payalButton html control i.e. document.getElementById("payalButton").addEventListener("payal", payalEventListener)
+	i. So by doing this, whenever user presses enter or shift key in username textbox, its keypress event listener will be called which will raise payal event to payalButton html control. So payalEventListener method will be called.
+	j. Lets implement payalEventListener method
+	function payalEventListener(event) {
+		if (event.keyPressed == "Enter") { // Hurray, we came here because of enter press}
+		else if (event.keyPressed == "Shift") { // Hurray, we came here because of shift press}
+	}
+
+5. how many listeners can be registered to a event?
+Ans Any number. in below example we can see that we registered 2 event listenered to payal event.
+Event listener registeration:
+document.getElementById("control1").addeventlistener("payal", control1PayalEventListener);
+document.getElementById("control2").addeventlistener("payal", control2PayalEventListener);
+
+While raising payal event, we will raise same event to both html controls.
+var event = new CustomEvent('payal', {'keyPressed', 'Enter'});
+document.getElementById("control1").disptachEvent(event);
+document.getElementById("control2").disptachEvent(event); 
+
+If we registered event listener to control2 but forgot to raise event to control2, control2eventlisterner will not be called as it hasn't received any event.
+
+6. how to get event object from event listener and when it is required?
+Ans Define paramter in event listener method. First parameter is always event object in event listener i.e. payalFormSubmitted(event)
