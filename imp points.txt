@@ -322,6 +322,10 @@ Ans. a. Always write code which changes UI in any way in View layer only
 	g. any user action handling should be in ViewModel layer
 	h. data storage should be in model layer.
 2. What is MVC pattern? **TODO:pk**
+Ans. MVC is Model View Controller.
+	- Model : It represent the state of apllication that is data.
+	- View : It represent the user interface.
+	- Controller : It act as interface between Model and
 3. What is diff between MVC and MVVM **TODO:pk**
 
 Project 11:
@@ -334,11 +338,14 @@ event -
 	a. Event is kind of notification which can be raised when some particular thing/user action happens. For e.g. raising click event when user does a mouse click.
 	b. Event can be pre-defined. Or user can define custom events also. 
 	c. For e.g. click event is pre-defined in javascript.
-	b. We can create custom event also using Event and CustomEvent For e.g. var event = new Event('payal') or var event = new CustomEvent('payal', {"customMessage": "payalCustomMessage"})
+	d. We can create custom event also using Event and CustomEvent For e.g. var event = new Event('payal') or var event = new CustomEvent('payal', {"customMessage": "payalCustomMessage"})
+
 event raise - 
 	a. When event is raised, all the listeners of that event are called and executed. event object itself also goes to those event listeners.
 	b. When user clicks using his mouse, javascript has pre-written code which raises click event
-	c. Similarly we can raise custom payal event when something happens. For e.g. when user presses ctrl+shft+p+k, then we can raise payal event using dispatchEvent. For e.g. document.getElementById("loginForm").dispatchEvent(event)
+	c. Similarly we can raise custom payal event when something happens. For e.g. when user presses ctrl+shft+p+k, then we can raise payal event using dispatchEvent. For e.g. 
+	document.getElementById("loginForm").dispatchEvent(event)
+
 event listener - 
 	a. event can be listened by any html control. 
 	b. We can register any event listener to a event.
@@ -352,9 +359,9 @@ event listener -
 
 3. How to pass additional data from event to event listener?
 Ans. In javascript, we can use CustomEvent to create a event which can take additional data. When this event raises, event listener is called. Event listener can get this event and its additional data. If loginFormSubmit is the event listener of payal event, then it can be defined in 2 ways:
-	a. function loginFormSubmit() { // write code here}. Here parameters are empty. This is done if we dont want to use event object in event listener
-	b. function loginFormSubmit(event) { // write code here}. Here we have passed one parameter named event. Always first passed parameter in event listener is event itself. So here event is actually payal event object. Now we can use this event object in event listener method to get event's additional data
-	c. So, lets say if we created payal event 'new CustomEvent('payal', {"customMessage": "payalCustomMessage"})'; and event listener as 'function loginFormSubmit(event)'; then i can use event.customMessage in event listerner method to get customMessage value. So, in this way we can pass any data from event to event listener
+	a. function loginFormSubmit() { // write code here}. Here parameters are empty. If we need to use event object, we can access it via 'event' keyword. We can use this event object in event listener method to get event's additional data
+	b. function loginFormSubmit(e) { // write code here}. Here we have passed one parameter named e. Always first passed parameter in event listener is event itself. So here e is actually payal event object. We can use this event object in event listener method to get event's additional data. If we wouldnt have defined e parameter, then for accessing event object we had to use it via event keyword.
+	c. So, lets say if we created payal event 'new CustomEvent('payal', {"customMessage": "payalCustomMessage"})'; and event listener as 'function loginFormSubmit(e)'; then i can use e.customMessage in event listerner method to get customMessage value. If we had not defined e, i.e. 'function loginFormSubmit()', then event.customMessage needs to be used as event object can be accessed by event keyword.
 	d. pre-defined events like onkeypress of javascript is one of the exmaple which passes additional data. For e.g. event.keyCode can be done in key event listener to get which key was pressed. 
 
 4. Example of event, event raiser/disptacher, event listener
@@ -370,7 +377,7 @@ Ans.
 		// do what u have to do
 	}
 	f. Now if want to know which key was pressed, then event listener can know this things from event object only. We can get event object in event listener method in this way:
-	function onkeypresslistener(event) {
+	function onkeypresslistener() {
 		// do what u have to do
 	}
 	g. In this event listener method, we want that if user pressed enter or shift key, then raise payal event on a button (we have defined this button as <button id="payalButton" />)
@@ -384,7 +391,7 @@ Ans.
 			document.getElementById("payalButton").disptachEvent(event); // here we raised event to payalButton html control
 		}
 	}	
-	h. Even though we raised payal event on payalButton html control, nothing will happen because our html control is <button id="payalButton" />. Here we havent registered any event listener for payal event. So on raising payal event to this control, nothing will happen. Lets register event listener here, so that whenever payal event is raised to this control, event listener can listen this event and call its method. i.e. <button id="payalButton" onpayal="" />. But this is wrong as there is nothing called onpayal. In custom event listener, only way to register is addeventlistener. So in some starting javascript constructor, we should have registered payal event listener in payalButton html control i.e. document.getElementById("payalButton").addEventListener("payal", payalEventListener)
+	h. Even though we raised payal event on payalButton html control, nothing will happen because our html control is <button id="payalButton" />. Here we havent registered any event listener for payal event. So on raising payal event to this control, nothing will happen. Lets register event listener here, so that whenever payal event is raised to this control, event listener can listen this event and call its method. i.e. <button id="payalButton" onpayal="..." />. But this is wrong as 'onpayal' keyword doesnt exist. In custom event listener, only way to register is addeventlistener. So in some starting javascript constructor, we should have registered payal event listener in payalButton html control i.e. document.getElementById("payalButton").addEventListener("payal", payalEventListener)
 	i. So by doing this, whenever user presses enter or shift key in username textbox, its keypress event listener will be called which will raise payal event to payalButton html control. So payalEventListener method will be called.
 	j. Lets implement payalEventListener method
 	function payalEventListener(event) {
@@ -403,7 +410,86 @@ var event = new CustomEvent('payal', {'keyPressed', 'Enter'});
 document.getElementById("control1").disptachEvent(event);
 document.getElementById("control2").disptachEvent(event); 
 
-If we registered event listener to control2 but forgot to raise event to control2, control2eventlisterner will not be called as it hasn't received any event.
+If we registered event listener to control1 but forgot to raise event to control2, control2eventlisterner will not be called as it hasn't received any event.
 
 6. how to get event object from event listener and when it is required?
-Ans Define paramter in event listener method. First parameter is always event object in event listener i.e. payalFormSubmitted(event)
+Ans If parameter is not defined in event listener, then use event keyword to access event object. If parameter is defined, then first parameter is always event object in event listener method i.e. payalFormSubmitted(e)
+
+7. Which event listener is called first? i. registered via onevent (like onclick) OR ii. addeventlistener
+Ans. addeventlistener gets called first and then onevent gets called.
+
+8. Does all the event listeners of a event execute in parallel or one after other?
+i.e. 
+var event = new CustomEvent('payal', {'keyPressed', 'Enter'});
+document.getElementById("control1").disptachEvent(event);
+document.getElementById("control2").disptachEvent(event); 
+
+In this example, we raised payal event to control1 and control2. So control1eventlistener and control2eventlistener should be called. But will they execute in parallal on or one after another?
+Ans. One after another because javascript runs in single thread. Also they execute in order of their event raising. As we raised event to control1 first, control1eventlistener will be called first and control2eventlistener will be called after control1eventlistener completion.
+
+9. If payal event is raised to both control1 and control2 and both are listening to payal event. Then is it possible to not call control2eventlistener?
+Ans. Yes, we can. When control1eventlistener is called, we can get the event object and set its preventDefault property to true i.e.
+function control1eventlistener(event) {
+	event.preventDefault = true;
+	// code here
+}
+
+Doing this, event will not go to any event listener after this control.
+
+Project 12:
+1. Javascript has submit event pre-defined. Any form control can register to this submit event using addeventlistener or onsubmit.
+	a. i.e. <form id="form1" onsubmit="loginFormSubmitted()"/> OR in javascript starting, we could have written document.getElementById("form1").addeventlistener("submit", loginFormSubmitted).
+	b. listener registered via addeventlisterner are raised first, then onsubmit event listener are called after that. 
+	c. After all the event listeners of submit event are called and none of event listeners returned false, then a form submit happens to the url mentioned in action attribute. i.e. for <form id="form1" action="google.com" />, when submit event is called, all the submit event listeners (via onsubmit or addeventlistener) are executed. If none of the event listener methods returned false, then internally 'document.getElementById("form1").submit('googl.com')' is called.
+	d. If any one of submit event listener method returned false OR we do event.preventDefault is done in any eventlistener, then 'document.getElementById("form1").submit('googl.com')' is not called. i.e. form is not submitted to the action attribute value.
+
+2. How submit event is raised?
+Ans. When users does a mouse click, click event is created and raised to every html control which is listening to click event. This all is done by javascript internally.
+Similarly when users presses some key, keypress event is created and raised to every html control which is listening to a keypress event. This is all done by javascript internally
+
+In same way, if user clicks on a html control WHOSE TYPE IS SUBMIT and that html control IS CHILD OF FORM CONTROL, then javascript creates a submit event and raises it to its parent form control (if form control is listening to submit event)
+
+E.g. 
+<form id="form1" ...>
+	...
+	<button type=submit /> // It can be button or input or any html control but with type submit
+</form>
+
+So whenever user clicks on this button, javacript raises submit event also in addition to click event. This submit event is raised to its parent form control which is form1. Thus submit event listeners of form1 are called.
+
+3. What happens with action attribute of form?
+Ans If none of the submit event listener returned false, then form is submitted to the value of action attribute internally. i.e 'document.getElementById("form1").submit('<action attribute value>')' is called internally. But if any one of event listener returned false OR event.preventDefault() called from any eventlistener, then this submit doesnt happen.
+
+4. Can we stop form submit to action attribute's value?
+Ans. Yes, we can via 2 ways.
+	i. Using event.preventDefault() in any of the event listener method.
+		<form onsubmit="loginFormSubmit()" id="form1/>. 
+		function loginFormSubmit() {
+			...
+			event.preventDefault();
+		}	
+	ii. From any submit event listener, return false.
+		a. <form onsubmit="loginFormSubmit()" id="form1/>. 
+		function loginFormSubmit() {
+			...
+			return false;
+		}
+		Here we are returning false form submit event listener, so we are thinking that form will not be automatically submitted to the action attribute value. But we are wrong. We are doing one mistake here.
+		b. Actually whatever we write inside onsubmit, is wrapped by another method i.e. final event listener is 
+		function temp() {
+			loginFormSubmit()
+		}
+		Is temp returning false here? No. 
+		As temp is the submit event listener and not loginFormSubmit; we are actually not returning false.
+		c. So, if we ewould have written <form onsubmit=" return loginFormSubmit()" id="form1/>.
+		function loginFormSubmit() {
+			...
+			return false;
+		}
+		Again as whatever we write in onsubmit is wrapper by another method, final event listener is something like 
+		function temp() {
+			return loginFormSubmit()
+		}
+		Is temp returning false here? Yes.
+		So, in this case form will not be submitted to action attribute's value.
+
