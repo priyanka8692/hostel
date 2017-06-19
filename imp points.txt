@@ -493,3 +493,28 @@ Ans. Yes, we can via 2 ways.
 		Is temp returning false here? Yes.
 		So, in this case form will not be submitted to action attribute's value.
 
+
+Project 13:
+1. Form can be submitted internally. Or we can preventDefault to stop submitting internally and we can submit it ourselves from submit event listener. Which one is preferred?
+Ans Depends on situation. For exmaple, form has username, password, email, otp. Now when user types any value in these and clicks submit, we want to check that
+  a. username length is not more than 12 characters
+  b. username should not be empty
+  c. password length is not more than 12 characters 
+  d. password should not be empty
+  e. email should follow *.*@*.com format here * cannot be empty
+  f. otp must be 6 digit integer
+If these things are not satisfied, then we dont want to submit form to server or any url.
+So for doing this kind of data validation on user's input, we validate data in submit event listener and submit form manually if and only if user data is validated.
+If there is nothing to validate or nothing else to do on submit apart from submitting form, in that case we can submit form internally.
+
+2. Data Validation - Client side and server side
+	a. If user is giving any input, then that input should be validated. Now if its possible to validate that input on client side, then do that validation before submitting form to server.
+	b. There are some validation which cannot be checked on client side and needs server for it. For e.g. if user types some username and password, then whether that username and password are correct or not cannot be known at client side, because server can only tell from its database that those username and password exists or not. 
+	c. Even if we have validated user input on client side, we need to do those validations again on server side. This is because, when we do client side validation, the code(javascript) is on client's browser and user can see that javascript code (by pressing F12 in chrome) and can change that code. Thus he can remove the client side validation if he wants to. [This is what hackers do sometimes]. So always validate input on server side.
+
+3. If we have done client side validation for user input, do we need to validate that user inputs on server side also once form is submitted to server?
+Ans Yes. Because client side validation can be seen by user and can be changed. Thus being on safer side of security, we should have same validations again on server side.
+
+4. Can user see client side code? Can user see server side code?
+Ans User can client side code because thats why it is said client side code. html, css and js are the code which actually goes to user's browser and then based on that code, browser shows the UI.
+User cannot server side code because that code never goes to client. Client code can communicate with server code via get, post requests.
