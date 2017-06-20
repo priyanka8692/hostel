@@ -19,7 +19,10 @@ function loginFormSubmitHandler() {
 	}
 	else {
 		// Form submit as validation successful
-		document.getElementById("loginForm").submit();
+		var loginForm = document.getElementById("loginForm");
+		loginForm.setAttribute("action", "success.html");
+		loginForm.setAttribute("method", "GET");
+		loginForm.submit();
 	}
 }
 

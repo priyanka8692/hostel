@@ -518,3 +518,39 @@ Ans Yes. Because client side validation can be seen by user and can be changed. 
 4. Can user see client side code? Can user see server side code?
 Ans User can client side code because thats why it is said client side code. html, css and js are the code which actually goes to user's browser and then based on that code, browser shows the UI.
 User cannot server side code because that code never goes to client. Client code can communicate with server code via get, post requests.
+
+
+Project 14:
+1. When we submit form, does it submit all of the inputs value within it or only few?
+And Form submits value of all of the input elements within it.
+
+2. What are parts of HTML element?
+Ans Usually html eleement has following definition:
+<element attr1="value1" attr2="val2">
+	elementValue
+	<childElement ...>...</childElement>
+</element
+
+Here element is called element tag. attr1, attr2 are attributes of element. elementValue is element's value. childElement is child element of element.
+
+3. What What parts of html element can be modified using javascript?
+Ans. We can do following things using javascript:
+	a. Adding a html element - We can create and add a new html element in html DOM/tree
+	b. Delete a html element - We can delete an existing html element in html DOM/tree
+	c. Manipulating an existing element - 
+		i. Add an attribute
+		ii. Delete an attribute
+		iii. Modify value of existing attribute
+		iv. Modify value of element
+		v. Add child element
+		vi. Delete child
+		vii. Modify existing child
+
+4. When we submit manually, it submits to the url value mentioned in action attribute. How to submit form manually to a url wihtout mentioning it in action attribute? 
+Ans. Not possible if we are using html, css, js normally without any frameworks. At max we can do is we can define action attribute in js instead of html. i.e. document.getElementById("loginForm").setAttribute("action", "success.html")
+
+5. When we submit manually, how to set method type (GET/POST)?
+Ans Either we can add method attribute in html file OR we can programatically do document.getElementById("loginForm").setAttribute("method", "GET")
+
+4. When we are submitting form manually, then how to submit only few inputs value? i.e. if username and password both are part of loginForm, then wubmitting form submits both input value? Is there any way to submit only few of the input values like submitting only username?
+Ans. We can do this using Ajax requests. We will read about it in next project.
