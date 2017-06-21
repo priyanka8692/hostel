@@ -554,3 +554,50 @@ Ans Either we can add method attribute in html file OR we can programatically do
 
 4. When we are submitting form manually, then how to submit only few inputs value? i.e. if username and password both are part of loginForm, then wubmitting form submits both input value? Is there any way to submit only few of the input values like submitting only username?
 Ans. We can do this using Ajax requests. We will read about it in next project.
+
+
+
+
+Project 15: Thread working
+
+1. 4 core processor of a computer CPU means - that there are 4 thread on comupter.
+2. If we think of CPU as some biscuit factory, then 1 thread is in worker in that factory. More the number of workers in that factory, more quickly work can be done in that factory in a given time (as all workers can do work simultaneously)
+3. This means 4 core CPU can do 4 works simulatenously at a given time)
+4. Lets say there is a machine which prepares biscuits. Machine runs for 2 hours and then is shutdown for half hour again and again. When the machine is running, it takes 1 minute to prepare 1 set of biscuits. A worker is needed to pack these set of biscuits. Packing takes 5 seconds. So if worker 1 is working on packing biscuits work, he enjoys free time in 2 ways:
+	a. When machine is running, he packs biscuits in 5 seconds and is free for 55 seconds (as one set of biscuits takes 1 minutes). For that 55 seconds, worker1 sleeps.
+	b. When machine is shutdown for half hour, worker1 sleeps for half hour.
+5. Is this good for company? No. because lot of time of worker1 is spent in sleeping. Obviously company will make more profit if he sleeps less and works more.
+6. So company first tries to solve the problme of worker sleeping when machine is shutdown. [Company is not yet focusing to solve problem of sleeping while machine is on]
+7. Company says that we have 4 workers and we have many works. For e.g. 
+	a. packing biscuits when machine is on is one work [In this worker has to work for 2 hours (as machine is on for 2 hours), and in these 2 hours he works for 5 seconds and sleeps for 55 seconds]
+	b. Printing MRP on packes biscuits is second work [This work is also of some duration. Within this duration, worker will work for some time and sleep for some time]
+	c. Giving tea to boss when he comes in the morning [This work is of 20 seconds with no free time in between].
+7. Company says that if a worker is free, he needs to be present in a room. In that room there is a manager who will manage what work to be given to workers.
+8. Working at company:
+	a. At day begining, all 4 workers are in room waiting for work. After sometime, work1 starts. So manager asks randomly to any free worker to go and do work 1 and come back as soon as done. Let say worker1 goes to do that work and will return in 2 hours (as work1 takes 2 hours. In these 2 hours, he will work for 5 seconds and then sleep for 55 seconds continously). 
+	b. There are only 3 workers in the room now. Within that 2 hours, 5 more work comes with different completion time (work2=1 hr, work3=3 hr, work4=2 hr, work5=7 hr, work6=9 hr).
+	c. SO manager send remaining 3 workers to first 3 works which came first. For remaining 2 works there are no workers left. So manager says that as soon as some worker is free, I will send them for remaining works. These remaining works wait in a queue for getting any worker.
+	d. After 2 hours, worker1 comes. manager immediately sends him to first waiting work.
+	e. In this way, company now uses the workers more effeciently. Because of this approach, worker doing work1 cannot sleep when machine is shutdown for half hour as he has to return to room. But still he enjoyed sleep of 55 seconds again and again when machine was on.
+	f. Sometimes when there is no work coming, workers sleep in the room but thats the problem of company to not have work at that time. Sometimes there is a lot of work and works needs to wait in a queue to get a worker.
+	f. Company can add or remove a worker based on work observations. For e.g. if from last many months, there is always atleast one worker free in the room at all the times (this can happen only if there is less work); then company can remove one worker.
+	Similarly, if from last many months, there is always works waiting in queue for workers (this can happen if work is more and workers are less), then company can add one more worker. This way comapny can optimize number of workers as per their work load.
+	g. In this appraoch, there are only 2 problems: i) While worker is working on some work, he will still enjoy sleep in between For e.g. sleeping for 55 seconds when machine prepares next set of biscuits. ii) If a worker is coming for doing work1, he should know some info about work1 like how many packets are packed till now, how many defective biscuits were there (knowing these info might help him in packing biscuits more properyl). As worker is chosen randomly by manager, problme is that how new worker will know of these info of work1.
+	h. To solve ii) problem, company can put a whiteboard where workers packs biscuits. When worker is done with the work, he wil update the info on whiteboard and then he will go to the room. Now when next worker comes, he will just read those info and thus those info can help him in doing his work more properly. He will also update the board when he is done with the work.
+	i. To solve i) problem of worker enjoying free time while doing work (5 sec work and 55 sec sleeping), there are 2 possible solutions:
+		- Solution 1: Currently our work is of 2 hours (as machine runs for 2 hours and then shut downs for half hour). We can reduce the work for 5 seconds. So whenever biscuit set is ready, we call worker from room. Worker comes, packs biscuit in 5 secs and then returns to room. After 55 seconds, we again call a worker from room. In this way, worker will not sleep in those 55 seconds. The problem with this appraoch is that calling worker from room and worker reaching takes 20 seconds. So comapny's 20 secs are wasted in calling worker for just 5 secs work. So in actual this solution is bad.
+		 - Solution 2: Company says that from now on, Worker will do other works when he is enjoying free time from work1. Lets say his other work is to attend customer calls. If he is in work1's 55 secs free time and a customer call comes, he will attend that call. If that call is finished by the time next set of biscuits are ready, he will pack the biscuits. If he is still in the call, manager will ask some other worker to pack biscuits. In this way, another worker is needed if and only if worker1 is busy in customer call. But usually that will not happen very freqently, because a customer call comes once in around half hour and call duration is 30 seconds. So high chances are that when 55 secs completes, worker1 is not on a call. In this way, worker1 can do many works at a time without the need of another worker. Another worker is needed only if work1's free time is over but worker1 is busy in work2.
+9. Thread working:
+	a. In computer world, there is something called ThreadPool where all free threads are present. [ThreadPool => room; thread => worker]
+	b. There is something called ThreadManager which decides which thread to send to complete a work.
+	c. When thread1 goes to do work1, it completes that work and returns to ThreadPool.
+	d. If there are lot of works, ThreadManger assigns free threads to works which came first.
+	e. If there are no free threads in threadPool, works need to wait in a queue for thread.
+	f. As soon as some thread is free, manager assigns it to first waiting work.
+	g. Based on thread and work behavior for sometime, we can get to know whether our application needs less threads or more threads. If there is always some thread free in threadPool, then we can remove some threads from threadPool. If there is always some work waiting in queue for thread, then we can add some thread in threadPool.
+	h. There are only 2 problems: i) When thread is doing some work, thread can enjoy sleeping in between [if that work needs waiting of some time in between. For e.g. in packing biscuits work, worker need to wait for 55 seconds for another set to pack] ii) Thread which is coming do some work should know some info about that work like how much of that work is already done etc. This info might help thread to do that work more properly. Problme here is that as ThreadManager assigns random available thread to work1, how new thread will know of these info.
+	i. For ii) problme, every thread can write work info in some file when its done with the work. When next thread comes to do the work, it can read work info from the file and then can do the work. This new thread will again update work info in file when its done with the work.
+	j. For i) problem, there are 2 solutions:
+		- Solution 1: Threads are called for small works. Problem here is calling a thread will take more time than the time taken to do the work.
+		- Solution 2: Thread1 does multiple works. When its in free time of work1, it will start doing work2. When work2 is completed within work1's free time, thread1 will do next set of work1 and then again go to work2. But  if work2 is not completed by the time work1's free time is finished, thread1 cant come to do work1. So ThreadManager calls a thread from ThreadPool to do work1. But chances of needing a seperate thread is less because Thread1 might be in work2's free time at that time [works done by thread have more free time than busy time. Thats why chances of a thread being in free time is more]
+10. All the works which comes to a thread have more free time and less busy time. Thus a single thread can do multiple works at a time (with less chances of thread1 being in some work when another work needs it). In case thread1 is busy in doing some work when another work needs it, new thread comes from ThreadManager to do the work.
